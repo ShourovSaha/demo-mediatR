@@ -20,7 +20,8 @@ namespace DemoMediatR.Controllers
         [HttpGet]
         public async Task<WeatherForecast?> Get()
         {
-            var response = await _mediator.Send(new WeatherMessage());
+            var response = await _mediator.Send(new WeatherMessage { Message = "Weather test message" });
+            await _mediator.Publish(new Audit { Message = "Weather message sent for audit." });
             return response;
         }
     }

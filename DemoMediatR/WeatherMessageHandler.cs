@@ -11,13 +11,11 @@ namespace DemoMediatR
 
         public Task<WeatherForecast> Handle(WeatherMessage request, CancellationToken cancellationToken)
         {
-            var aa = request;
-
             return Task.FromResult(new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(1),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                Summary = request.Message + " || " +Summaries[Random.Shared.Next(Summaries.Length)]
             });
         }
     }

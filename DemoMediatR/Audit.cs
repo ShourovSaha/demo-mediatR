@@ -2,7 +2,7 @@
 
 namespace DemoMediatR
 {
-    public class WeatherMessage : IRequest<WeatherForecast>
+    public class Audit : INotification
     {
         public string Message { get; set; }
     }
